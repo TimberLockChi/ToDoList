@@ -22,7 +22,7 @@ struct AddView: View {
                 TextField("Type something here...",text:$textFieldText)
                     .padding(.horizontal)
                     .frame(height: 55)
-                    .background(Color(textFieldBackgroundColor))
+                    .background(Color(UIColor.secondarySystemBackground))//可以随着黑暗模式变化
                     .cornerRadius(10)
                 Text("输入长度不少于三个字符")
                     .font(.system(size: 10,weight: .semibold,design: .monospaced))
@@ -66,8 +66,19 @@ struct AddView: View {
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            AddView()
+        //同时预览light模式和dark模式
+        Group{
+            NavigationView {
+                AddView()
+            }
+            .preferredColorScheme(.dark)
+            .environmentObject(ListViewModel())
+            
+            NavigationView {
+                AddView()
+            }
+            .preferredColorScheme(.light)
+            .environmentObject(ListViewModel())
         }
     }
 }

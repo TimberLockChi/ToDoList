@@ -35,6 +35,7 @@ struct NoItemsView: View {
                 .scaleEffect(animate ? 1.1 : 1.0)//缩放效果
                 .offset(y:animate ? -7 : 0)
             }
+            .frame(maxWidth:400)
             .padding(40)
             .onAppear(perform: addAnimation)
         }

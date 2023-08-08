@@ -23,9 +23,9 @@ struct ToDoListApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
+            NavigationStack(root: {
                 ListView()
-            }
+            })
             .environmentObject(listViewModel)//设置全局环境变量
         }
     }
